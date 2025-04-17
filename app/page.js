@@ -1,7 +1,8 @@
 "use client";
+
 import { useState } from "react";
 import GameInstructions from "./components/game-instruction";
-import { Button, Tooltip } from "flowbite-react";
+import { Button } from "flowbite-react";
 
 export default function HomePage() {
   const [guesses, setGuesses] = useState([]);
@@ -29,15 +30,16 @@ export default function HomePage() {
       setTimeout(() => {
         alert("Gratulálok, nyertél!");
         resetGame();
-      }, 100);
+      }, 500);
     }
 
     if (newGuesses.length === 5 && !data.isCorrect) {
       setTimeout(() => {
         alert(`Sajnálom, nem találtad el! 😢 A szó: ${word}`);
         resetGame();
-      }, 100);
+      }, 2000);
     }
+
     const resetGame = () => {
       setGuesses([]);
       setFeedbacks([]);
@@ -46,10 +48,10 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4">
+    <main className="min-h-screen flex flex-col items-center  p-4">
       <GameInstructions />
 
-      <div className="grid grid-rows-5 gap-2 mt-6">
+      <div className="grid grid-rows-5 gap-1 mt-1">
         {Array.from({ length: 5 }).map((_, i) => (
           <div className="flex gap-1" key={i}>
             {Array.from({ length: 5 }).map((_, j) => {
@@ -63,12 +65,26 @@ export default function HomePage() {
                 white: "bg-white text-black",
               }[feedback];
 
+              // csak akkor animáljon, ha van betű és feedback
+              const shouldAnimate = letter && feedback !== "white";
+
               return (
                 <div
                   key={j}
-                  className={`w-12 h-12 flex items-center justify-center border border-gray-300 text-xl font-bold ${colorClass}`}
+                  className={`
+                  w-12 h-12 flex  items-center justify-center border border-gray-600 text-xl font-bold
+                 
+                `}
                 >
-                  {letter}
+                  <div
+                    className={`w-full h-full  ${
+                      shouldAnimate ? "flip" : ""
+                    } flex items-center justify-center ${colorClass} 
+                      
+                    }`}
+                  >
+                    {letter}
+                  </div>
                 </div>
               );
             })}

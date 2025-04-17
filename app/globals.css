@@ -2,7 +2,9 @@
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
 /* globals.css vagy saját CSS fájl */
-
+.dark {
+  color: white;
+}
 /* styles/animations.css */
 
 .flip .letter {

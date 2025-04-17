@@ -4,7 +4,7 @@ const GameInstructions = () => {
       <h2 className="text-lg sm:text-xl font-semibold mb-2 text-center">
         🧩 Hogyan játssz?
       </h2>
-      <p className="text-sm sm:text-base mb-2 text-justify">
+      <p className="text-sm  sm:text-base mb-2 text-justify">
         A <strong>Wordle</strong> egy szórakoztató szó- és logikai játék. A cél,
         hogy 5 próbálkozásból kitaláld a titkos 5 betűs magyar szót.
       </p>
